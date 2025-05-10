@@ -1,0 +1,35 @@
+🚀 Master the SQL SELECT Statement with Real-World Power Moves
+ SQL is more than just syntax — it's how you speak to your data. Here's how I use SELECT every day to drive decisions 👇
+
+1. Basic Data Fetching
+SELECT name, salary FROM employees;
+📊 Get the essentials — who earns what.
+
+2. Filtering Records
+SELECT * FROM orders WHERE status = 'Pending';
+📦 Find what’s stuck in the pipeline.
+
+3. Aggregation & Grouping
+SELECT dept, COUNT(*) FROM employees GROUP BY dept;
+📈 Team size breakdown in seconds.
+
+4. Sorting Results
+SELECT name, sales FROM reps ORDER BY sales DESC;
+🏆 Identify top performers instantly.
+
+5. Joins for Combined Insights
+SELECT o.id, c.name FROM orders o JOIN customers c ON o.cust_id = c.id;
+🔗 Combine customer and order data 
+
+6. Subqueries to Slice Deeper
+SELECT name FROM products WHERE price > (SELECT AVG(price) FROM products);
+💡 What’s selling above average?
+
+7. Common Table Expressions (CTEs)
+WITH recent_orders AS (
+ SELECT * FROM orders WHERE order_date > CURRENT_DATE - 30
+)
+SELECT COUNT(*) FROM recent_orders;
+📅 Zoom into last month’s activity 
+
+🛠️ SQL makes every system smarter 
