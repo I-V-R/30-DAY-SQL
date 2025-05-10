@@ -1,0 +1,46 @@
+🔍 Mastering the WHERE Clause in SQL
+🚀 The WHERE clause filters your data like a pro — here's how I use it to make queries smarter:
+✅ Filter rows based on conditions: 
+SELECT * FROM orders WHERE status = 'Delivered'; 
+
+✅ Use comparison operators
+SELECT * FROM orders WHERE price > 100 AND stock < 50 
+
+✅ Work with ranges using BETWEEN
+SELECT * FROM orders WHERE order_date BETWEEN '2024-01-01' AND '2024-01-31' 
+
+✅ Match specific values using IN:
+SELECT * FROM company WHERE department IN ('HR', 'Finance', 'IT') 
+
+✅ Find patterns with LIKE:
+SELECT * FROM orders WHERE name LIKE 'A%' -- starts with A 
+
+✅ Handle missing data with IS NULL:
+SELECT * FROM orders WHERE email IS NULL 
+
+🔍 More Pro-Level Uses of WHERE in SQL
+✅ Combine multiple conditions with AND / OR
+SELECT * FROM employees WHERE department = 'Sales' AND salary > 50000;
+🎯 Target precise rows using compound logic.
+
+✅ Use parentheses for clarity in complex filters
+SELECT * FROM employees WHERE (status = 'Active' AND age > 30) OR (role = 'Manager')
+🧠 Avoid logic mistakes in multi-condition queries.
+
+✅ Apply WHERE in UPDATE / DELETE
+UPDATE inventory SET stock = 0 WHERE discontinued = TRUE;
+⚠️ Avoid full-table changes — always filter!
+
+✅ Filter results in JOIN conditions too
+SELCT * FROM orders o JOIN customers c ON o.cust_id = c.id WHERE c.country = 'India';
+🌍 Combine joins + filters for precise reporting.
+
+✅ Filter on derived columns using WHERE
+SELECT price, price * 0.9 AS discounted FROM products WHERE price * 0.9 < 100;
+💡 Use calculations directly inside your filters.
+
+✅ Don’t confuse WHERE with HAVING:
+ Use WHERE for row-level filtering, HAVING for aggregate results.
+SELECT dept, COUNT(*) FROM employees GROUP BY dept HAVING COUNT(*) > 10;
+
+✅ Pro Tip: Always use indexes and proper data types on columns used in WHERE for better performance.
