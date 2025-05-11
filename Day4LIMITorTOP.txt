@@ -1,0 +1,45 @@
+DAY 4 - LIMIT/TOP - How to Fetch Only What You Need
+Why retrieve 10,000 rows when you just need 10?
+✅ Use LIMIT in MySQL/PostgreSQL
+SELECT * FROM orders LIMIT 10;
+📦 Grabs the top 10 records — fast & efficient.
+
+✅ Use TOP in SQL Server
+SELECT TOP 10 * FROM orders;
+🔝 Same result, SQL Server style.
+
+✅ Combine with ORDER BY to get specific slices:
+SELECT * FROM employees ORDER BY salary DESC LIMIT 5;
+🎯 Top 5 highest earners.
+
+✅ Pagination for APIs/Dashboards
+-- MySQL / PostgreSQL
+SELECT * FROM orders ORDER BY order_date DESC LIMIT 10 OFFSET 30;
+📄 Use OFFSET to fetch page-wise data (page 4 if 10 per page).
+
+✅ Dynamic Top-N per Group (PostgreSQL Example)
+SELECT * FROM (
+ SELECT *, RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS rnk
+ FROM employees
+) sub WHERE rnk <= 3;
+🎯 Get top 3 earners per department — not just overall.
+
+✅ FETCH FIRST (Standard SQL / Oracle / PostgreSQL 13+)
+SELECT * FROM employees ORDER BY hire_date DESC FETCH FIRST 5 ROWS ONLY;
+📜 ANSI-standard alternative to LIMIT or TOP.
+
+✅ SQL Server TOP WITH TIES
+SELECT TOP 3 WITH TIES * FROM employees ORDER BY salary DESC;
+🪢 Returns all rows that tie at the cutoff value.
+
+✅ Efficient Limit + Count Strategy
+Use LIMIT for display
+Use COUNT(*) for total count in pagination UIs
+ Avoid fetching all records just to paginate.
+
+✅ Random Sampling with LIMIT
+SELECT * FROM products ORDER BY RAND() LIMIT 5;
+🎲 Useful for A/B testing, product rotation, etc. (MySQL)
+
+💡 Pro Tip: Always sort (ORDER BY) before using LIMIT or TOP for predictable results.
+💡 Performance Tip: LIMIT with OFFSET on large tables can be slow. Use indexed filters (WHERE id > last_seen_id) for high-performance pagination.
